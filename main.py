@@ -19,6 +19,7 @@ class OnlineCompetitionMonitor:
         self.website_login_url = config.website_login_url
         self.user_account = config.user_account
         self.user_password = config.user_password
+        self.aimed_user = config.aimed_user
 
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
@@ -75,8 +76,8 @@ class OnlineCompetitionMonitor:
                     file.write("\n" + str([formatted_time, current_user_name, current_problem_name]))
 
                 print(current_user_name, current_problem_name, formatted_time)
-
-                if current_user_name == '杨 宏宇' and previous_problem_name != current_problem_name:
+                # previous_problem_name != current_problem_name
+                if current_user_name == self.aimed_user :
                     self.send_notification(current_user_name, current_problem_name, formatted_time)
 
             time.sleep(10)

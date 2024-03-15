@@ -8,22 +8,22 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-import sqlite3
+import config 
 
 class OnlineCompetitionMonitor:
     def __init__(self):
-        self.smtp_server_address = 'smtp.126.com'
-        self.sender_email_address = 'zxxx1304@126.com'
-        self.smtp_password = 'HDZRKJRSEVKGKCIA'  # SMTP密钥
-        self.receiver_email_address = '1277630739@qq.com'  # 目标邮箱
-        self.website_login_url = 'https://lexue.bit.edu.cn/course/view.php?id=15114'
-        self.user_account = '1120231322'  # BIT账号
-        self.user_password = 'Xhc2020029@'  # BIT密码
+        self.smtp_server_address = config.smtp_server_address
+        self.sender_email_address = config.sender_email_address
+        self.smtp_password = config.smtp_password
+        self.receiver_email_address = config.receiver_email_address
+        self.website_login_url = config.website_login_url
+        self.user_account = config.user_account
+        self.user_password = config.user_password
 
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
-        options.add_argument('--log-level=3')  # 添加这一行
+        options.add_argument('--log-level=3')  
         options.add_experimental_option('excludeSwitches', ['enable-automation'])
         self.driver = webdriver.Chrome(options=options)
         

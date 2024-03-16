@@ -1,9 +1,9 @@
 # config.py
-smtp_server_address = 'smtp.126.com' #SMTP服务地址
-sender_email_address = '发件邮箱'
-smtp_password = '发件邮箱SMTP授权码'
-receiver_email_address = '目标邮箱'
+smtp_server_address = 'smtp.126.com'
+sender_email_address = 'zxxx1304@126.com'
+smtp_password = 'HDZRKJRSEVKGKCIA'
+receiver_email_address = '1277630739@qq.com'
 website_login_url = 'https://lexue.bit.edu.cn/course/view.php?id=15114'
-user_account = 'BIT账号'
-user_password = 'BIT密码'
-aimed_user = '目标用户'
+user_account = '1120231322'
+user_password = 'Xhc2020029@'
+aimed_user = '张 景飞'

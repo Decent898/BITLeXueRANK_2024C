@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import config 
+import threading
 
 class OnlineCompetitionMonitor:
     def __init__(self):
@@ -41,8 +42,12 @@ class OnlineCompetitionMonitor:
         self.driver.find_element(By.XPATH, login_form_path + "/div[2]/div[1]/div/form/div/div[3]/a").click()
 
         time.sleep(2)
-
+    def start_monitoring(self):
+        monitor_thread = threading.Thread(target=self.monitor)
+        monitor_thread.start()
+        return monitor_thread
     def monitor(self):
+        print("Aimed at:",self.aimed_user)
         print("------SYSTEM START------")
 
         temporary_data = [['' for i in range(2)] for j in range(16)]
@@ -68,6 +73,7 @@ class OnlineCompetitionMonitor:
                 temporary_data[count][1] = current_problem_name
 
             for i in range(count - 1, 1, -1):
+                print("Aimed at:",self.aimed_user)
                 [current_user_name, current_problem_name] = temporary_data[i]
 
                 formatted_time = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -114,6 +120,9 @@ class OnlineCompetitionMonitor:
         smtp.quit()
 
         print("发送成功")
+    def change_aim(self,user_to_track,email):
+        self.aimed_user = user_to_track
+        self.receiver_email_address = email
 
 if __name__ == "__main__":
     monitor = OnlineCompetitionMonitor()

@@ -7,7 +7,7 @@
 |---------|--------------------------------------|
 | 附件 | PNG图片，目前前十名情况|
 
-这段代码是一个Python脚本,使用Selenium WebDriver自动与一个网站(https://lexue.bit.edu.cn/course/view.php?id=15114)进行交互。以下是代码的分解:
+这段代码是一个Python脚本,使用Selenium WebDriver自动与一个网站(https://lexue.bit.edu.cn/course/view.php?id=15114) 进行交互。以下是代码的分解:
 
 它导入了必要的模块,如selenium、hashlib、requests、smtplib和email。
 它设置了SMTP服务器详细信息、发件人和收件人邮箱地址、登录URL以及网站的用户凭证。

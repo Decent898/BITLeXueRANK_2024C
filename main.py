@@ -46,6 +46,7 @@ class OnlineCompetitionMonitor:
         monitor_thread = threading.Thread(target=self.monitor)
         monitor_thread.start()
         return monitor_thread
+    
     def monitor(self):
         print("Aimed at:",self.aimed_user)
         print("------SYSTEM START------")
@@ -53,6 +54,7 @@ class OnlineCompetitionMonitor:
         temporary_data = [['' for i in range(2)] for j in range(16)]
         while True:
             self.driver.refresh()
+            print("Aimed at:",self.aimed_user)
             first_prize_problem_path = '/html/body/div[1]/div[3]/div/div/section[2]/aside/section[3]/div/div/table/tbody'
             count = 1
             with open('data.txt', 'r') as file:
@@ -73,7 +75,7 @@ class OnlineCompetitionMonitor:
                 temporary_data[count][1] = current_problem_name
 
             for i in range(count - 1, 1, -1):
-                print("Aimed at:",self.aimed_user)
+                
                 [current_user_name, current_problem_name] = temporary_data[i]
 
                 formatted_time = time.strftime('%Y-%m-%d %H:%M:%S')

@@ -1,17 +1,96 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>在线比赛监控器</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="email"], input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             function updateRanking() {
                 $.ajax({
                     url: '/get_ranking',
                     type: 'GET',
-                    success: function (data) {
+                    success: function(data) {
                         var rankingList = '';
                         for (var i = 0; i < data.length; i++) {
                             rankingList += '<li>' + data[i] + '</li>';
@@ -25,21 +104,20 @@
         });
     </script>
 </head>
-
 <body>
-    <h1>在线比赛监控器</h1>
-    <form method="post">
-        <label for="email">电子邮件地址:</label>
-        <input type="email" id="email" name="email" value="{{ email }}" required>
-        <br>
-        <label for="user_to_track">要追踪的用户:</label>
-        <input type="text" id="user_to_track" name="user_to_track" value="{{ user_to_track }}" required>
-        <br>
-        <button type="submit">提交</button>
-    </form>
-
-    <h2>最新AC</h2>
-    <ul id="ranking-list"></ul>
+    <div class="container">
+        <h1>在线比赛监控器</h1>
+        <form method="post">
+            <label for="email">电子邮件地址:</label>
+            <input type="email" id="email" name="email" value="{{ email }}" required>
+            <br>
+            <label for="user_to_track">要追踪的用户:</label>
+            <input type="text" id="user_to_track" name="user_to_track" value="{{ user_to_track }}" required>
+            <br>
+            <button type="submit">提交</button>
+        </form>
+        <h2>最新排名</h2>
+        <ul id="ranking-list"></ul>
+    </div>
 </body>
-
 </html>
